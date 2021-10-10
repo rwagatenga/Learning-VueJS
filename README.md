@@ -7,4 +7,4 @@ When I was just boring I took a decision to learn Vue JS with an instructor call
 
 ## cd project folder
 
-##npm install or yarn install
+## npm install or yarn install
