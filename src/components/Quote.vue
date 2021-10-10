@@ -1,30 +1,29 @@
 <template>
-    <div class="component">
-        <h3>You may edit the User here</h3>
-        <p>Edit me!</p>
-        <p>User Age: {{ userAge }}</p>
-        <button @click="editAge">Edit Age</button>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-body quote">
+                <slot></slot>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-    import {eventBus} from '../main';
 
-    export default {
-        props: ['userAge'],
-        methods: {
-            editAge() {
-                this.userAge = 30;
-//                this.$emit('ageWasEdited', this.userAge);
-//                eventBus.$emit('ageWasEdited', this.userAge);
-                eventBus.changeAge(this.userAge);
-            }
-        }
-    }
 </script>
 
-<style scoped>
-    div {
-        background-color: lightgreen;
+<style>
+    .panel-body {
+        font-family: 'Arizonia', cursive;
+        font-size: 24px;
+        color: #6e6e6e
+    }
+
+    .quote {
+        cursor: pointer;
+    }
+
+    .quote:hover {
+        background-color: #ffe2e2;
     }
 </style>

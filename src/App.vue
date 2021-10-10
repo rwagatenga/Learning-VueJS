@@ -1,43 +1,47 @@
 <template>
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <button @click="selectedComponent = 'appQuote'">Quote</button>
-                <button @click="selectedComponent = 'appAuthor'">Author</button>
-                <button @click="selectedComponent = 'appNew'">New</button>
-                <hr>
-                <p>{{ selectedComponent }}</p>
-                <keep-alive>
-                    <component :is="selectedComponent">
-                        <p>Default Content</p>
-                    </component>
-                </keep-alive>
-                <!--<app-quote>-->
-                    <!--<h2 slot="title">{{ quoteTitle }}</h2>-->
-                    <!--<p>A wonderful Quote</p>-->
-                <!--</app-quote>-->
-            </div>
-        </div>
+		<app-header :quoteCount="quotes.length" :maxQuotes="maxQuotes"></app-header>
+		<app-new-quote @quoteAdded="newQuote"></app-new-quote>
+		<app-quote-grid :quotes="quotes" @quoteDeleted="deleteQuote"></app-quote-grid>
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<div class="alert alert-info">
+					Info: Click on a Quote to Delete it !!
+				</div>
+			</div>
+		</div>
     </div>
 </template>
 
 <script>
-    import Quote from './components/Quote.vue';
-    import Author from './components/Author.vue';
-    import New from './components/New.vue';
-
+	import QuoteGrid from "./components/QuoteGrid.vue"
+	import NewQuote from "./components/NewQuote.vue"
+	import Header from "./components/Header.vue"
     export default {
         data: function() {
-            return {
-                quoteTitle: 'The Quote',
-                selectedComponent: 'appQuote'
-            }
-        },
-        components: {
-            appQuote: Quote,
-            appAuthor: Author,
-            appNew: New
-        }
+			return { 
+				quotes: [
+					'Just a Quote to see something'
+				],
+				maxQuotes: 10
+			}
+		},
+		methods: {
+			newQuote (quote) {
+				if (this.quotes.length >= this.maxQuotes) {
+					return alert("Please Delete Quotes !!")
+				}
+				this.quotes.push(quote)
+			},
+			deleteQuote(index) {
+				this.quotes.splice(index, 1)
+			}
+		},
+		components: {
+			appQuoteGrid: QuoteGrid,
+			appNewQuote: NewQuote,
+			appHeader: Header
+		}
     }
 </script>
 
