@@ -16,7 +16,7 @@ When I was just boring I took a decision to learn Vue JS with an instructor call
 3. git checkout branch_name or git switch branch_name you want
 
 ### For Course1 branch
-you don't have to install any dependencies
+you don't have to install any dependencies. It is just VueJS as cdn packaged html and javascript file
 
 ### For other branches
 
