@@ -1,6 +1,6 @@
 # vue-cli
 
-> Simple Vue-Cli Project for Component Concept
+> A Vue.js project
 
 ## Build Setup
 
